@@ -4,6 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):   
-    
+    date_of_birth = models.DateField(auto_now=False, auto_now_add=False, default = None, null =True)
     def __str__(self):
         return self.username
