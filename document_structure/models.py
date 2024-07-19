@@ -30,7 +30,8 @@ class Document(models.Model):
     
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+    document = models.FileField(null=True, blank=True, db_index=True)
+    shared_with = models.ManyToManyField(User, related_name='documents_shared_with', blank=True)
     is_delete = models.BooleanField(default=False)
     deleted_by = models.ForeignKey(User, related_name='document_deleter', on_delete=models.CASCADE, null=True, blank=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
